@@ -9,7 +9,7 @@ import 'firebase/compat/firestore';
 
 const db = firebase.firestore(firebase)
 
-export const AddNotes = () => {
+export const AddNotes = ({setRelodTasks}) => {
 
     const [task, setTask] = useState("")
 
@@ -27,6 +27,8 @@ export const AddNotes = () => {
                 .then(() => {
 
                     setTask("")
+                    setRelodTasks(true);
+
                 })
 
         }
@@ -38,6 +40,7 @@ export const AddNotes = () => {
                 type="text"
                 placeholder="Nueva tarea..."
                 onChange={(e) => setTask(e.target.value)}
+                value={task}
             />
             <Button type="submit">
 
